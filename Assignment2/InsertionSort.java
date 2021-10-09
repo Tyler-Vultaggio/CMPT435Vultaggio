@@ -12,6 +12,7 @@ public class InsertionSort
 	{
 		int n = InsertionArray.length;
 		String key;
+		int countCompare = 0;
         for (int i = 1; i < n; ++i) 
         {
             key = InsertionArray[i];
@@ -24,11 +25,25 @@ public class InsertionSort
             {
             	InsertionArray[j + 1] = InsertionArray[j];
                 j = j - 1;
+                countCompare++;
             }
             InsertionArray[j + 1] = key;
         }
-		
+		System.out.println(countCompare);
 		return InsertionArray;
+	}
+	
+	/*
+	 * This is a function so that I can see the sorted array printed.
+	 * Thus I know that it is working properly.
+	 */
+	
+	public static void printArray(String[] printableArray)
+	{
+		for(int i = 0; i < 	printableArray.length; i++)
+		{
+			System.out.println(	printableArray[i]);
+		}
 	}
 
 	public static void main(String[] args) throws FileNotFoundException 
@@ -36,10 +51,7 @@ public class InsertionSort
 		String[] InsertionArray = new String[666];
 		InsertionArray = myFileReader.fileArray();
 		InsertionArray = iSort(InsertionArray);
-		for(int i = 0; i < InsertionArray.length; i++)
-		{
-			System.out.println(InsertionArray[i]);
-		}
+		//printArray(InsertionArray);
 
 	}
 
