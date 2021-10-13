@@ -53,6 +53,7 @@ public class SelectionSort
 
 	public static void main(String[] args) throws FileNotFoundException 
 	{
+		//I am making a copy of the original array so I don't need to shuffle free 10 points
 		String[] SelectionArray = new String[666];
 		SelectionArray = myFileReader.fileArray();
 		SelectionArray = sSort(SelectionArray);

@@ -48,6 +48,7 @@ public class InsertionSort
 
 	public static void main(String[] args) throws FileNotFoundException 
 	{
+		//I am making a copy of the original array so I don't need to shuffle free 10 points
 		String[] InsertionArray = new String[666];
 		InsertionArray = myFileReader.fileArray();
 		InsertionArray = iSort(InsertionArray);

@@ -120,6 +120,7 @@ public class QuickSort
 
 	public static void main(String[] args) throws FileNotFoundException 
 	{
+		//I am making a copy of the original array so I don't need to shuffle free 10 points
 		String[] QuickArray = new String[666];
 		QuickArray = myFileReader.fileArray();
 		QuickArray = qSort(QuickArray, 0, QuickArray.length-1);

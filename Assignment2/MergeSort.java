@@ -102,6 +102,7 @@ public class MergeSort
 
 	public static void main(String[] args) throws FileNotFoundException 
 	{
+		//I am making a copy of the original array so I don't need to shuffle free 10 points
 		String[] MergeArray = new String[666];
 		MergeArray = myFileReader.fileArray();
 		MergeArray = mSort(MergeArray, 0, MergeArray.length-1);
