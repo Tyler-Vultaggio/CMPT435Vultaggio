@@ -35,8 +35,8 @@ public class LinearSearch
 	
 	public static void main(String[] args) throws FileNotFoundException 
 	{
-		int totalCompares = 0;
-		int averageCompares = 0;
+		double totalCompares = 0;
+		double averageCompares = 0.00;
 		String[] TempArray = new String[666];
 		TempArray = myFileReader.fileArray();
 		String[] TargetArray = new String[42];
@@ -54,8 +54,9 @@ public class LinearSearch
 		}
 		
 		averageCompares = totalCompares/TargetArray.length;
+		double roundedAverageCompares = (double) (Math.round(averageCompares*100.0)/100.0);
 		System.out.println("This is the number of total comparisons: " + totalCompares);
-		System.out.println("This is the average number of comparisons: " + averageCompares);
+		System.out.println("This is the average number of comparisons: " + roundedAverageCompares);
 		
 		
 	}

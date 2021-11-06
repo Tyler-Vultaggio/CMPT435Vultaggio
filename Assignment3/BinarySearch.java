@@ -19,17 +19,17 @@ public class BinarySearch
 	        	//System.out.println(comparisons);
 	            int position = start + (end - start) / 2;
 	 
-	            int res = target.compareTo(sortedArray[position]);
+	            int newtarget = target.compareTo(sortedArray[position]);
 	 
-	            // Check if x is present at mid
-	            if (res == 0)
+	            // Check if newtarget is present at mid
+	            if (newtarget == 0)
 	                return comparisons;
 	 
-	            // If x greater, ignore left half
-	            if (res > 0)
+	            // If newtarget greater, ignore left half
+	            if (newtarget > 0)
 	            	start = position + 1;
 	 
-	            // If x is smaller, ignore right half
+	            // If newtarget is smaller, ignore right half
 	            else
 	            	end = position - 1;
 	        }
@@ -40,8 +40,8 @@ public class BinarySearch
 	
 	public static void main(String[] args) throws FileNotFoundException 
 	{
-		int totalCompares = 0;
-		int averageCompares = 0;
+		double totalCompares = 0;
+		double averageCompares = 0;
 		String[] TempArray = new String[666];
 		TempArray = myFileReader.fileArray();
 		String[] TargetArray = new String[42];
@@ -58,8 +58,9 @@ public class BinarySearch
 		}
 		
 		averageCompares = totalCompares/TargetArray.length;
+		double roundedAverageCompares = (double) (Math.round(averageCompares*100.0)/100.0);
 		System.out.println("This is the number of total comparisons: " + totalCompares);
-		System.out.println("This is the average number of comparisons: " + averageCompares);
+		System.out.println("This is the average number of comparisons: " + roundedAverageCompares);
 		
 	}
 
