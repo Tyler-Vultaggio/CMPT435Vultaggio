@@ -71,8 +71,14 @@ public class Graphs
 	{
 		for(int i = 0; i <vertices.size(); i++)
 		{
-			vertices.get(i).printDetails();
+			vertices.get(i).printVertexInfo();
 		}
 	}
 	
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+
 	}
+	
+}

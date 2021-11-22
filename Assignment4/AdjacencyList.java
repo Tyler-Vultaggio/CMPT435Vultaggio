@@ -23,5 +23,29 @@ public class AdjacencyList
 		head.setNext(next);
 	}
 	
+	public AdjacencyNode getHead()
+	{
+		return head;
+	}
 	
+	public boolean isEmpty()
+	{
+		return head == null;
+	}
+	
+	public void printList(AdjacencyNode edge)
+	{
+		System.out.println(edge.getStart() + " -> :");
+		while(edge != null)
+		{
+			System.out.print(" " + edge.getEnd());
+			edge = edge.getNext();
+		}
+	}
+	
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+
+	}
 }

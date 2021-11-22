@@ -13,7 +13,9 @@ public class TreeNode
 	
 	public TreeNode () 
 	{
-		
+		left = null;
+		right = null;
+		magicItem = null;
 	}
 	
 	//This section is for setting methods

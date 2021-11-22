@@ -72,7 +72,7 @@ public class Vertex
 	}
 	//______________________________________________
 	
-	public void printDetails() 
+	public void printVertexInfo() 
 	{
         System.out.println( "\n____________________________________" );
         System.out.println( "Vertex ID: " + getID() );
@@ -82,7 +82,12 @@ public class Vertex
             System.out.println( edges.get(i).getID() );
         }
 	}
+	
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
 
+	}
 
 }
 
