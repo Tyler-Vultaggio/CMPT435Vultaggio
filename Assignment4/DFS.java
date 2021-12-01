@@ -11,7 +11,7 @@ public class DFS
 	private ArrayList<Vertex> vertices;
 	private MyStack stack = new MyStack();
 	
-	@SuppressWarnings("unchecked")
+	//@SuppressWarnings("unchecked")
 	public DFS(ArrayList<Vertex> vertices)
 	{
 		this.vertices = (ArrayList<Vertex>)vertices.clone();

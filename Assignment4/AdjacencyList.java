@@ -35,12 +35,13 @@ public class AdjacencyList
 	
 	public void printList(AdjacencyNode edge)
 	{
-		System.out.println(edge.getStart() + " -> :");
+		System.out.print(edge.getStart() + " -> :");
 		while(edge != null)
 		{
 			System.out.print(" " + edge.getEnd());
 			edge = edge.getNext();
 		}
+		System.out.println();
 	}
 	
 	public static void main(String[] args) 

@@ -4,25 +4,26 @@
 * Algorithms
 */
 
-public class MyQueue //extends Node
+public class MyQueue extends Vertex
 {
-	public static Node head;
-	public static Node tail;
+	public static Vertex head;
+	public static Vertex tail;
 	
 	
-	/*
-	 * public MyQueue() {
-	 * 
-	 * }
-	 */
+	public MyQueue() 
+	{
+		
+	}
+	 
 	
 	//enqueue adds a new element to the tail end of the queue 
 	//and if there is nothing in the queue it also makes it the head
 	public void enqueue(Vertex vertex)
 	{
-		Node oldTail = tail;
-		tail = new Node();
+		Vertex oldTail = tail;
+		tail = new Vertex();
 		//tail.letter = newLetter;
+		tail = vertex;
 		tail.next = null;
 		if(isEmpty())
 		{
@@ -43,7 +44,7 @@ public class MyQueue //extends Node
 		}
 		else
 		{
-			Vertex deQueuedLetter = head.vertex;
+			Vertex deQueuedLetter = head;
 			head = head.next;
 			return deQueuedLetter;
 		}

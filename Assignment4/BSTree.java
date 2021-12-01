@@ -11,7 +11,7 @@ public class BSTree
 	
 	private TreeNode root;
 	private int count;
-	private ArrayList<String> LeftsRights;
+	private ArrayList<String> LeftsRights = new ArrayList<String>();
 	
 	public BSTree()
 	{
@@ -57,6 +57,7 @@ public class BSTree
                 if(key.compareTo(nodeToLookAt.getmagicItem()) < 0)
                 {
                     nodeToLookAt = nodeToLookAt.getLeft();
+                    LeftsRights.add("L");
 
                     if(nodeToLookAt == null) 
                     {
@@ -67,6 +68,8 @@ public class BSTree
                 else 
                 {
                     nodeToLookAt = nodeToLookAt.getRight();
+                    LeftsRights.add("R");
+                    
                     if(nodeToLookAt == null)
                     {
                         parent.setRight(node);
@@ -82,9 +85,9 @@ public class BSTree
 		
 		TreeNode magicitem = root;
 		count = 0;
-		while(magicitem.getmagicItem() != target)
+		while(magicitem.getmagicItem().compareToIgnoreCase(target) != 0)
 		{
-			if(target.compareToIgnoreCase(magicitem.getmagicItem())<0)
+			if(target.compareToIgnoreCase(magicitem.getmagicItem()) < 0)
 			{
 				magicitem = magicitem.getLeft();
 				LeftsRights.add("L");
@@ -97,8 +100,19 @@ public class BSTree
 				count++;
 			}
 		}
-		System.out.print(LeftsRights);
 		return magicitem;
+	}
+	
+	public void printPath()
+	{
+		System.out.print("This was the path taken through the tree: ");
+		for(int i = 0; i < LeftsRights.size(); i++)
+		{
+			System.out.print(LeftsRights.get(i) + " ");
+		}
+		System.out.println();
+		System.out.println();
+		LeftsRights.clear();
 	}
 	
 	public void TreeTraverseinOrder(TreeNode target)
@@ -106,7 +120,7 @@ public class BSTree
 		if(target !=null)
 		{
 			TreeTraverseinOrder(target.getLeft());
-			System.out.println(target);
+			System.out.println(target.getmagicItem());
 			TreeTraverseinOrder(target.getRight());
 		}
 	}

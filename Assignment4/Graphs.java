@@ -30,6 +30,7 @@ public class Graphs
 		return vertices;
 	}
 	
+	
 	//Adds an edge to the graph
 	public void addEdgetoGraph(int startId, int endId) 
 	{
@@ -67,6 +68,43 @@ public class Graphs
 	        return location;
 	 }
 	
+	
+	  public void DFS(Vertex root) 
+	  {
+		  if(!root.DFSisProcessed)
+		  {
+			  System.out.print(root.id + " ");
+			  root.setDFSisProcessed(true);
+		  }
+		  for(Vertex n: root.edges)
+		  {
+			  if(!n.DFSisProcessed)
+			  {
+				  DFS(n);
+			  }
+		  }
+	  }
+	  
+	  public void BFS(Vertex root) 
+	  {
+		  MyQueue queue = new MyQueue();
+		  queue.enqueue(root);
+		  root.setBFSisProcessed(true);
+		  while(!queue.isEmpty())
+		  {
+			  Vertex vertex = queue.dequeue();
+			  System.out.print(vertex.id + " ");
+			  for(Vertex n: vertex.edges)
+			  {
+				  if(!n.BFSisProcessed)
+				  {
+					  queue.enqueue(n);
+					  n.setBFSisProcessed(true);
+				  }
+			  }
+		  }
+	  }
+	 	
 	public void GraphDetails()
 	{
 		for(int i = 0; i <vertices.size(); i++)

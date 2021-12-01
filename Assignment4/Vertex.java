@@ -13,6 +13,7 @@ public class Vertex
 	public boolean DFSisProcessed;
 	public boolean BFSisProcessed;
 	public ArrayList<Vertex> edges = new ArrayList<Vertex>();
+	public Vertex next;
 	
 	
 	public Vertex() 
@@ -20,7 +21,8 @@ public class Vertex
 		id = 0;
 		DFSisProcessed = false;
 		BFSisProcessed = false;
-		edges = null;	
+		edges = null;
+		next = null;
 	}
 	
 	public Vertex(int id)
