@@ -4,19 +4,21 @@
 * Algorithms
 */
 
+import java.util.Comparator;
+
 public class Spices 
 {
 	public String color;
 	public double total_price;
 	public int qty;
-	public double price_per;
+	public static double price_per;
 	
 	Spices()
 	{
 		color = null;
 		total_price = -1;
 		qty = -1;
-		price_per = total_price/qty;
+		price_per = -1;
 	}
 	
 	Spices(String color, double total_price, int qty)
@@ -24,7 +26,7 @@ public class Spices
 		this.color = color;
 		this.total_price = total_price;
 		this.qty = qty;
-		price_per = total_price/qty;
+		//price_per = total_price/qty;
 	}
 	
 	//This section is for setting methods
@@ -63,7 +65,9 @@ public class Spices
 	}
 	public double getPrice_per()
 	{
-		return price_per;
+		double total_price = getTotal_Price();
+		int qty = getQty();
+		return total_price/qty;
 	}
 	//______________________________________________
 	
@@ -79,7 +83,19 @@ public class Spices
 		
 	}
 	
-	
+	public static Comparator<Spices> SpicePricePer = new Comparator<Spices>() 
+	{
+        public int compare(Spices spice1, Spices spice2)
+        {
+
+            double Price_Per1 = spice1.getPrice_per();
+            double Price_Per2 = spice2.getPrice_per();
+
+            // For descending order
+            return (int) (Price_Per2 - Price_Per1);
+
+        }
+    };
 	
 
 	public static void main(String[] args) 

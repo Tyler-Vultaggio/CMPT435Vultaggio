@@ -11,7 +11,7 @@ public class Vertex
 	
 	public int id;
 	public ArrayList<Edges> edges = new ArrayList<Edges>();
-	public Vertex next;
+	public Vertex prev;
 	//public int weight;
 	
 	
@@ -19,7 +19,7 @@ public class Vertex
 	{
 		id = 0;
 		edges = null;
-		next = null;
+		prev = null;
 		//weight = 0;
 	}
 	
@@ -37,9 +37,9 @@ public class Vertex
 	{
 		edges.add(edge);
 	}
-	public void setNext(Vertex next)
+	public void setPrev(Vertex prev)
 	{
-		this.next = next;
+		this.prev = prev;
 	}
 	//______________________________________________
 	
@@ -53,9 +53,9 @@ public class Vertex
 	{
 		return edges;
 	}
-	public Vertex getNext()
+	public Vertex getPrev()
 	{
-		return next;
+		return prev;
 	}
 	//______________________________________________
 	

@@ -5,11 +5,13 @@
 */
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.lang.Math;
+import java.util.Comparator;
+import java.util.*;
 
 public class FractionalKnapsack 
 {
@@ -54,12 +56,60 @@ public class FractionalKnapsack
         		 }
         	 }
          }
+         Collections.sort(allSpices, Spices.SpicePricePer);
+         
+         //Prints the sorted arrayList of Spices in descending order of Price_per_qty
+         //This is to see that it sorted how I wanted it to
+         
+         for (Spices spice : allSpices) 
+         {
+             spice.printSpice();
+         }
+         
+         //The link below is where I learned the above from, I adapted what they did to make it work with my code.
+         //https://www.geeksforgeeks.org/how-to-sort-an-arraylist-of-objects-by-property-in-java/
+         
+         int knapsackCount = 0;
+         int spiceCount = 0;
+         double spiceFraction;
+         double differnceInSpace;
+         System.out.println("\n=================================================");
+         System.out.println("Filling the KnapSacks");
+         System.out.println("=================================================");
+         
+         while(knapsackCount < knapsacks.length)
+         {
+        	 if(spiceCount < allSpices.size() && knapsacks[knapsackCount].getCurrent_Size() != knapsacks[knapsackCount].getTotal_Size())
+        	 {
+	        	 if(knapsacks[knapsackCount].getCurrent_Size() + allSpices.get(spiceCount).getQty() < knapsacks[knapsackCount].getTotal_Size())
+	        	 {
+	        		 knapsacks[knapsackCount].addSize(allSpices.get(spiceCount).getQty());
+	        		 knapsacks[knapsackCount].addValue(allSpices.get(spiceCount).getTotal_Price());
+	        		 System.out.println("Added all of " + allSpices.get(spiceCount).getColor());
+	        		 spiceCount++;
+	        	 }
+	        	 else
+	        	 {
+	        		 differnceInSpace = (knapsacks[knapsackCount].getTotal_Size() - knapsacks[knapsackCount].getCurrent_Size());
+	        		 spiceFraction = differnceInSpace/allSpices.get(spiceCount).getQty();
+        			 knapsacks[knapsackCount].addValue(allSpices.get(spiceCount).getPrice_per() * differnceInSpace);
+        			 knapsacks[knapsackCount].addSize(allSpices.get(spiceCount).getQty() * spiceFraction);
+        			 System.out.println("Added qty: " + spiceFraction + " of spice: " + allSpices.get(spiceCount).getColor() + " at " + allSpices.get(spiceCount).getPrice_per() + " per.");
+        			 spiceCount++;
+	        	 }
+        	 }
+        	 else
+        	 {
+        		 
+        		 System.out.println("Knapsack of capcity " + knapsacks[knapsackCount].getTotal_Size() + " is worth " + knapsacks[knapsackCount].getValue());
+        		 System.out.println("\n_________________________________________________\n");
+        		 knapsackCount++;
+        		 spiceCount = 0;
+        	 }
+         }
+         
 	}
 	
-	public void sortSpices(ArrayList<Spices> allSpices)
-	{
-		//allSpices.sort(()-> o1.getCustomProperty().compareTo(o2.getCustomProperty()));
-	}
 
 	public static void main(String[] args) throws FileNotFoundException 
 	{

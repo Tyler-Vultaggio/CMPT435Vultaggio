@@ -99,8 +99,8 @@ public class Graphs
 				if(distance[from] != Integer.MAX_VALUE && distance[to] > distance[from] + weight)
 				{
 					distance[to] = distance[from] + weight;
-					edges.get(j).getDestination().setNext(edges.get(j).getSource());
-					vertices.get(from).setNext(edges.get(j).getDestination());
+					//edges.get(j).getDestination().setPrev(edges.get(j).getSource()); //Flip this
+					vertices.get(to).setPrev(edges.get(j).getSource()); //Filp this
 					//System.out.println(edges.get(j).getDestination().getNext().getID());
 					//System.out.println(vertices.get(from).getID());
 				}
@@ -128,21 +128,25 @@ public class Graphs
 	{
 		for(int i = 1; i < vertices.size(); i++)
 		{
-			System.out.print("1 -> " + (i+1) + " cost is: " + distance[i] + "; path is 1");
-			//path(i+1);
+			System.out.print("1 -> " + (i+1) + " cost is: " + distance[i] + "; path is ");
+			path(vertices.get(i));
 			System.out.println("");
 		}
 	}
 	
-	public void path(int end)
+	public void path(Vertex vertex)
 	{
-		int i = 0;
-		int j = 0;
-		while(j != end)
+		if(vertex.getPrev() != null)
 		{
-			System.out.print(" -> " + vertices.get(i).getNext().getID());
-			i = vertices.get(i).getNext().getID() - 1;
-			j = i + 1;
+			path(vertex.getPrev());
+		}
+		if(vertex.getID() == 1)
+		{
+			System.out.print(vertex.getID());
+		}
+		else
+		{
+			System.out.print(" -> " + vertex.getID());
 		}
 	}
 	
