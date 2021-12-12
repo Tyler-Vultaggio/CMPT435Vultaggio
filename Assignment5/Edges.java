@@ -1,7 +1,8 @@
-/**
- * 
- */
-
+/** @author Tyler Vultaggio
+* Assignment 5
+* Due Friday 12/10/2021
+* Algorithms
+*/
 public class Edges 
 {
 	public Vertex source;

@@ -1,6 +1,6 @@
 /** @author Tyler Vultaggio
-* Assignment 4
-* Due Friday 11/19/2021
+* Assignment 5
+* Due Friday 12/10/2021
 * Algorithms
 */
 
@@ -100,7 +100,7 @@ public class Graphs
 				{
 					distance[to] = distance[from] + weight;
 					edges.get(j).getDestination().setNext(edges.get(j).getSource());
-					vertices.get(from).setNext(edges.get(j).getSource());
+					vertices.get(from).setNext(edges.get(j).getDestination());
 					//System.out.println(edges.get(j).getDestination().getNext().getID());
 					//System.out.println(vertices.get(from).getID());
 				}
@@ -128,25 +128,21 @@ public class Graphs
 	{
 		for(int i = 1; i < vertices.size(); i++)
 		{
-			System.out.print("1 -> " + (i+1) + " cost is: " + distance[i] + "; ");
-			path(i);
+			System.out.print("1 -> " + (i+1) + " cost is: " + distance[i] + "; path is 1");
+			//path(i+1);
 			System.out.println("");
 		}
 	}
 	
-	public void path(int destination)
+	public void path(int end)
 	{
-		for(int i = 0; i < destination; i++)
+		int i = 0;
+		int j = 0;
+		while(j != end)
 		{
-			if(i == 0)
-			{
-				System.out.print("path is " + vertices.get(i).getID() + " -> ");
-				//System.out.print(vertices.get(i).getNext().getID() + " -> ");
-			}
-			else
-			{
-				System.out.print(vertices.get(i).getNext().getID() + " -> ");
-			}
+			System.out.print(" -> " + vertices.get(i).getNext().getID());
+			i = vertices.get(i).getNext().getID() - 1;
+			j = i + 1;
 		}
 	}
 	

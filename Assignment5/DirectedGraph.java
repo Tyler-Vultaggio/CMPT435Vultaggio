@@ -1,5 +1,5 @@
 /** @author Tyler Vultaggio
-* Assignment 4
+* Assignment 5
 * Due Friday 12/10/2021
 * Algorithms
 */
@@ -17,7 +17,7 @@ public class DirectedGraph
 	private static final File myFile = new File(FILE_NAME);
 	
 	
-	private static void readFileVertexAndMakeGraph() throws FileNotFoundException 
+	public static void readFileVertexAndMakeGraph() throws FileNotFoundException 
 	{
             String[] regVertex;
             String[] regEdges;
