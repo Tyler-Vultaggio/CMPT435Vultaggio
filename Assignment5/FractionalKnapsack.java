@@ -8,10 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.Comparator;
-import java.util.*;
 
 public class FractionalKnapsack 
 {
@@ -71,7 +68,7 @@ public class FractionalKnapsack
          
          int knapsackCount = 0;
          int spiceCount = 0;
-         double spiceFraction;
+         double spicePortion;
          double differnceInSpace;
          System.out.println("\n=================================================");
          System.out.println("Filling the KnapSacks");
@@ -83,24 +80,32 @@ public class FractionalKnapsack
         	 {
 	        	 if(knapsacks[knapsackCount].getCurrent_Size() + allSpices.get(spiceCount).getQty() < knapsacks[knapsackCount].getTotal_Size())
 	        	 {
-	        		 knapsacks[knapsackCount].addSize(allSpices.get(spiceCount).getQty());
+	        		 //Adds the value to the Knapsack.
 	        		 knapsacks[knapsackCount].addValue(allSpices.get(spiceCount).getTotal_Price());
+	        		 //Adds the space taken up by the amount of spice.
+	        		 knapsacks[knapsackCount].addSize(allSpices.get(spiceCount).getQty());
+	        		 //Prints what was added to the Knapsack
 	        		 System.out.println("Added all of " + allSpices.get(spiceCount).getColor());
 	        		 spiceCount++;
 	        	 }
 	        	 else
 	        	 {
+	        		 //Finds the space left in the Knapsack.
 	        		 differnceInSpace = (knapsacks[knapsackCount].getTotal_Size() - knapsacks[knapsackCount].getCurrent_Size());
-	        		 spiceFraction = differnceInSpace/allSpices.get(spiceCount).getQty();
+	        		 //Calculates how much of the spice it can add the to Knapsack
+	        		 spicePortion = differnceInSpace/allSpices.get(spiceCount).getQty();
+	        		 //Adds the value to the Knapsack.
         			 knapsacks[knapsackCount].addValue(allSpices.get(spiceCount).getPrice_per() * differnceInSpace);
-        			 knapsacks[knapsackCount].addSize(allSpices.get(spiceCount).getQty() * spiceFraction);
-        			 System.out.println("Added qty: " + spiceFraction + " of spice: " + allSpices.get(spiceCount).getColor() + " at " + allSpices.get(spiceCount).getPrice_per() + " per.");
+        			 //Adds the space taken up by the amount of spice.
+        			 knapsacks[knapsackCount].addSize(allSpices.get(spiceCount).getQty() * spicePortion);
+        			 //Prints what was added to the Knapsack
+        			 System.out.println("Added qty: " + spicePortion + " of spice: " + allSpices.get(spiceCount).getColor() + " at " + allSpices.get(spiceCount).getPrice_per() + " per.");
         			 spiceCount++;
 	        	 }
         	 }
         	 else
         	 {
-        		 
+        		 //Print out the properties of the KnapSack.
         		 System.out.println("Knapsack of capcity " + knapsacks[knapsackCount].getTotal_Size() + " is worth " + knapsacks[knapsackCount].getValue());
         		 System.out.println("\n_________________________________________________\n");
         		 knapsackCount++;
