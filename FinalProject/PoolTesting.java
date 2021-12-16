@@ -33,7 +33,7 @@ public class PoolTesting
 			populationSize = input.nextInt();
 			if(populationSize < 1)
 			{
-				System.out.print("\nThe population size has to be greater than 7 since the test pool size is set to 8.\n");
+				System.out.print("\nThe population size has to be greater than 1.\n");
 			}
 			else
 			{
@@ -92,7 +92,7 @@ public class PoolTesting
 		int case2 = 0;
 		int case3 = 0;
 		int startpos = 0;
-		int endpos = startpos+8;
+		int endpos = startpos+groupSize;
 		for(int i = 0; i < numberofgroups; i++)
 		{
 			//This was to see where the indexes of test group were being created
@@ -135,8 +135,8 @@ public class PoolTesting
 			
 			//isInfected(testGroup);
 			//testGroup.clear();
-			startpos = startpos+8;
-			endpos = endpos+8;
+			startpos = startpos+groupSize;
+			endpos = endpos+groupSize;
 		}
 		//Prints the results of my pool test
 		System.out.println("Results of my test");
