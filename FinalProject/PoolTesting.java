@@ -31,7 +31,7 @@ public class PoolTesting
 		{
 			System.out.print("Please enter an integer value for the population size: ");
 			populationSize = input.nextInt();
-			if(populationSize < 7)
+			if(populationSize < 1)
 			{
 				System.out.print("\nThe population size has to be greater than 7 since the test pool size is set to 8.\n");
 			}
@@ -66,14 +66,27 @@ public class PoolTesting
 	public static void poolTesting(ArrayList<Integer> populationGroup)
 	{
 		int numberofgroups = populationSize/groupSize;
+		if (numberofgroups == 0)
+		{
+			numberofgroups = 1;
+		}
 		//Expected values
+		int tempCase3;
 		DecimalFormat df = new DecimalFormat("#.##");
+		if(df.format((numberofgroups *  0.0004)).equals("0"))
+		{
+			tempCase3 = 0;
+		}
+		else
+		{
+			tempCase3 = (int)Math.ceil(numberofgroups *  0.0004);
+		}
 		System.out.println("Expected output");
 		System.out.println("========================================================");
 		System.out.println("Case (1): " + numberofgroups + " × 0.8500 = " + df.format((numberofgroups *  0.8500)) + " instances requiring " + (int)Math.ceil(numberofgroups *  0.8500) + " tests");
 		System.out.println("Case (2): " + numberofgroups + " × 0.1496 = " + df.format((numberofgroups *  0.1496)) + " instances requiring " + (int)Math.ceil(numberofgroups *  0.1496 * 7) + " tests");
-		System.out.println("Case (3): " + numberofgroups + " × 0.0004 = " + df.format((numberofgroups *  0.0004)) + " instances requiring " + ((int)Math.ceil(numberofgroups *  0.0004) * 11) + " tests");
-		System.out.println("Total Tests expected are : " + ((int)Math.ceil(numberofgroups *  0.8500) + (int)Math.ceil(numberofgroups *  0.1496 * 7) + ((int)Math.ceil(numberofgroups *  0.0004) * 11)) + " for a popultation size of: " + populationSize + " and for an infection rate of: " + infectionRate + "%");
+		System.out.println("Case (3): " + numberofgroups + " × 0.0004 = " + df.format((numberofgroups *  0.0004)) + " instances requiring " + (tempCase3 * 11) + " tests");
+		System.out.println("Total Tests expected are : " + ((int)Math.ceil(numberofgroups *  0.8500) + (int)Math.ceil(numberofgroups *  0.1496 * 7) + (tempCase3 * 11)) + " for a popultation size of: " + populationSize + " and for an infection rate of: " + infectionRate + "%");
 		System.out.println("________________________________________________________\n");
 		int case1 = 0;
 		int case2 = 0;
@@ -84,6 +97,10 @@ public class PoolTesting
 		{
 			//This was to see where the indexes of test group were being created
 			//System.out.println(startpos + " :: " + endpos);
+			if(endpos > populationGroup.size()-1)
+			{
+				endpos = populationGroup.size()-1;
+			}
 			testGroup = populationGroup.subList(startpos, endpos);
 			//System.out.println(testGroup);
 			testsUsed++;
